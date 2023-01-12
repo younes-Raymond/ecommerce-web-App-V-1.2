@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <title>Document</title>
+    <meta name="google-signin-client_id" content="399002253531-e5hog49hos8sns4l9509fgds830okta9.apps.googleusercontent.com">
+</head>
+<body>
+  <h1>login</h1>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+    <!-- function sing in  -->
+  <script>
+      function onSignIn(googleUser) {
+          var profile = googleUser.getBasicProfile();
+          console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+          console.log('Name: ' + profile.getName());
+          console.log('Image URL: ' + profile.getImageUrl());
+          console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+  </script>
+<!-- function sing in  -->
+
+   
+</body>
+</html>

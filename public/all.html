@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>all files</title>
+</head>
+<body>
+    <div> <a href="index.html">home</a></div>
+    <script>
+getdata()
+async function getdata() {
+    const response = await fetch('/api');
+    
+    const data = await response.json();
+    for(item of data) {
+        const root = document.createElement("div");
+        const username = document.createElement("div");
+        const geo = document.createElement("div")
+        const date = document.createElement("div");
+        username.textContent = `yourname is: ${item.username}`;
+        geo.textContent = `$geolocation is : ${item.lat}, ${item.lon}`;
+        const dateString = new Date(item.timestamp).toLocaleString();
+        date.textContent = dateString;
+        root.append(geo,date,username);
+        document.body.append(root);
+        root.classList.add("root");
+    }
+
+    const body = document.querySelector("body");
+    body.style.cssText = "display: flex;flex-direction: column;justify-content: flex-start;align-items: center;background: aquamarine;font-size: 40px;font-family: cursive;"
+
+}
+    </script>
+    
+</body>
+</html>
