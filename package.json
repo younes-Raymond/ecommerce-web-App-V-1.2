@@ -15,6 +15,11 @@
   "author": "younes pro",
   "license": "MIT",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.1",
+    "@types/leaflet": "^1.9.0",
+    "@types/react-redux": "^7.1.25",
+    "@types/webgl-ext": "^0.0.33",
+    "@types/webrtc": "^0.0.33",
     "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -27,18 +32,33 @@
     "https": "^1.0.0",
     "ip-geolocation-api-javascript-sdk": "^1.0.9",
     "jquery": "^3.6.1",
+    "leaflet": "^1.9.3",
     "multer": "^1.4.5-lts.1",
     "nedb": "^1.8.0",
     "nodemailer": "^6.8.0",
     "nodemailer-smtp-transport": "^2.7.4",
     "nodemon": "^2.0.20",
+    "npm-run-all": "^4.1.5",
     "passport": "^0.6.0",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0",
+    "react-redux": "^8.0.5",
+    "redux": "^4.2.0",
     "sqlite3": "^5.1.4"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.2",
+    "ts-loader": "^9.4.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4",
     "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-middleware": "^6.0.1",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-hot-middleware": "^2.25.3"
   }
 }

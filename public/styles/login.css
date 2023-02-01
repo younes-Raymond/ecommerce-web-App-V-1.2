@@ -9,10 +9,11 @@
 body 
 {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     min-height: 100vh;
     background: #23232a;
+    flex-direction: column;
 
 }
 :root {

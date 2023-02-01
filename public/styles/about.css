@@ -1,0 +1,49 @@
+
+:root 
+{
+  --main-orange: hsl(26, 100%, 55%);
+  --pale-orange:hsl(25, 100%, 94%);
+  --Very-dark-blue: hsl(220, 13%, 13%);
+--Dark-grayish-blue: hsl(219, 9%, 45%);
+--Grayish-blue: hsl(220, 14%, 75%);
+--Light-grayish-blue: hsl(223, 64%, 98%);
+--White: hsl(0, 0%, 100%);
+}
+
+
+
+
+.container {
+    padding: auto;
+    margin: auto;
+    /* font-size: 25px; */
+    filter: drop-shadow(-3px -9px 19px hsl(26, 100%, 55%));
+}
+
+.map-container iframe
+{
+    height: 500px;
+    width: 80%;
+    border: 1px solid red;
+    margin: 10%;
+}
+main h1
+{
+ color: var(--main-orange);
+ margin: 6% 0%;
+}
+
+.toggleButton
+{
+ display: none;
+ 
+}
+/* 
+.container-bar ul {
+    display: inline-flex;
+    align-items: center;
+    margin-left: -98px;
+    margin-right: -8px;
+    width: 35%;
+} */
+

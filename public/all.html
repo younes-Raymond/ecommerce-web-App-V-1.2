@@ -9,6 +9,14 @@
 <body>
     <div> <a href="index.html">home</a></div>
     <script>
+let colwar = 1185;
+let salon = 1600
+let salonthebin = 200
+let choumber = 1300
+let cousine = 800;
+
+console.log(`total of ${colwar+ salon+ salonthebin+ choumber+cousine} `)
+
 getdata()
 async function getdata() {
     const response = await fetch('/api');
@@ -32,6 +40,7 @@ async function getdata() {
     body.style.cssText = "display: flex;flex-direction: column;justify-content: flex-start;align-items: center;background: aquamarine;font-size: 40px;font-family: cursive;"
 
 }
+
     </script>
     
 </body>

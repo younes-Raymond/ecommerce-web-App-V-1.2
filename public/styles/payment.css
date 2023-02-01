@@ -66,7 +66,10 @@ body {
     padding: 20px;
     color: #707070;
 }
-
+h1{
+    color: #fff;
+    margin-top: 10%;
+}
 label {
     padding-bottom: 5px;
     font-size: 13px;
