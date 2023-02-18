@@ -42,7 +42,8 @@ play.onclick = () => {
     return;
   }
   
-  if ('mediaDevices' in navigator && navigator.mediaDevices.getUserMedia) {
+  const nvmG = navigator.mediaDevices.getUserMedia as any ;
+  if ('mediaDevices' in navigator && nvmG) {
     const updatedConstraints = {
       ...constraints,
       deviceId: {
@@ -174,6 +175,6 @@ form.addEventListener('submit', (event) => {
   if (!validateForm()) {
     event.preventDefault();
   } else if (validateForm()) {
-    window.location.href = "Home";
+    // window.location.href = "Home";
   }
 });

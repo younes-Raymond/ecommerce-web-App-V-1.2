@@ -45,7 +45,8 @@ play.onclick = () => {
         pause.classList.remove('d-none');
         return;
     }
-    if ('mediaDevices' in navigator && navigator.mediaDevices.getUserMedia) {
+    const nvmG = navigator.mediaDevices.getUserMedia;
+    if ('mediaDevices' in navigator && nvmG) {
         const updatedConstraints = Object.assign(Object.assign({}, constraints), { deviceId: {
                 exact: cameraOptions.value
             } });
@@ -138,6 +139,5 @@ form.addEventListener('submit', (event) => {
         event.preventDefault();
     }
     else if (validateForm()) {
-        window.location.href = "Home";
     }
 });

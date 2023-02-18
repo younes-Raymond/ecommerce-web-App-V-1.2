@@ -1,6 +1,6 @@
 // TypeScript Photo Booth Demo Project
 // @author Kenneth Reilly <kenneth@innovationgroup.tech>
-import { CameraMode, IButtons, Defaults } from './types.js'
+import { CameraMode, IButtons, Defaults } from './types'
 
 abstract class PhotoBooth {
 

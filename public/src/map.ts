@@ -85,7 +85,7 @@ mymap.setView([lat,lon],15)
 } else {
 alert("please give us the premession from setting up and try again ");
 }
-}, 1000)
+}, 100000000)
 
 
 

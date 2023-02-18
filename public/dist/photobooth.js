@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const types_js_1 = require("./types.js");
+const types_1 = require("./types");
 class PhotoBooth {
     static init() {
         PhotoBooth.buttons.take_photo = document.querySelector("button[name='take_photo']");
@@ -40,11 +40,11 @@ class PhotoBooth {
         a.click();
     }
     static switch_cam() {
-        PhotoBooth.mode = (PhotoBooth.mode == types_js_1.CameraMode.User) ? types_js_1.CameraMode.Environment : types_js_1.CameraMode.User;
+        PhotoBooth.mode = (PhotoBooth.mode == types_1.CameraMode.User) ? types_1.CameraMode.Environment : types_1.CameraMode.User;
         PhotoBooth.init_camera();
     }
 }
-PhotoBooth.mode = types_js_1.CameraMode.Environment;
+PhotoBooth.mode = types_1.CameraMode.Environment;
 PhotoBooth.buttons = { take_photo: null, switch_cam: null };
 PhotoBooth.on_get_media = (stream) => {
     PhotoBooth.canvas = document.createElement('canvas');
@@ -54,8 +54,8 @@ PhotoBooth.on_get_media = (stream) => {
     PhotoBooth.video.srcObject = stream;
 };
 PhotoBooth.on_video_ready = () => {
-    PhotoBooth.canvas.width = types_js_1.Defaults.width;
-    PhotoBooth.canvas.height = PhotoBooth.video.videoHeight / (PhotoBooth.video.videoWidth / types_js_1.Defaults.width);
+    PhotoBooth.canvas.width = types_1.Defaults.width;
+    PhotoBooth.canvas.height = PhotoBooth.video.videoHeight / (PhotoBooth.video.videoWidth / types_1.Defaults.width);
     PhotoBooth.video.setAttribute('height', PhotoBooth.canvas.height.toString());
     PhotoBooth.video.setAttribute('width', PhotoBooth.canvas.width.toString());
 };

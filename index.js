@@ -14,7 +14,8 @@ const { getMaxListeners } = require('process');
 const { Server } = require('http');
 const { resolve } = require('path');
 const { errorMonitor } = require('events');
-const { copyFile } = require('fs');
+const fs = require('fs');
+
 app.use(cors())
 app.use(express.json());
 app.use(bodyParser.json({limit: '1mb'}));
@@ -25,8 +26,7 @@ const position = new Datastore('position.db');
 position.loadDatabase();
 const database2 = new Datastore('database2.db');
 database2.loadDatabase();
-const infoUser = new Datastore('infoUser.db');
-infoUser.loadDatabase();
+
 // middlware 
 app.set('view engine', 'ejs');
 
@@ -67,9 +67,6 @@ app.get('/about-us', (req,res) => {
   res.render('about-us')
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`server started on port ${PORT}`));
-
 
 
 // save costumer information into database from html5 
@@ -77,13 +74,13 @@ app.post('/', (req,res) => {
   console.log("i got a request from files")
  const nameUser = req.body.name;
  const phone = req.body.phone;
-//  const photo = req.files.photo;
+ const photo = req.files.photo;
  const email = req.body.email;
  const userinfo = {
   nameUser:nameUser,
   phone: phone,
   email:email,
-  // photo: photo,
+  photo: photo,
 };
 console.log(userinfo)
 
@@ -103,15 +100,13 @@ console.log(userinfo)
       res.json({
         status: 'success',
         nameUser:nameUser,
-        // photo: photo,
         phone: phone,
         email:email,
+        photo: photo,
       });
     }
   });
 });
-
-
 
 
 
@@ -148,6 +143,7 @@ app.post('/upload-screenshot', (req, res) => {
   });
 });
 
+
 // api from the map.js file  
 app.post('/api', (req, res) => {
   console.log(`i got a request from multiple api `);
@@ -174,6 +170,8 @@ app.post('/api', (req, res) => {
   });
 })
 
+
+
 const getdata = (req,res) => {
 database2.find({}, (err,docs) => {
 console.log(err);
@@ -185,9 +183,9 @@ if(docs){
 // getdata()
 
 
-
 const sendEmailToDelivery = async (currentUserEmail, deliveryEmail) => {
  
+
 
   const getLocation = () => {
      return new Promise((resolve, reject) => {
@@ -222,14 +220,13 @@ const sendEmailToDelivery = async (currentUserEmail, deliveryEmail) => {
  
 Promise.all([getCurrentUser(),getLocation()])
 .then((value) => {
+  console.log(value)
   var location;
   var currentUser;
   location = value[1]
-  console.log(location.lon);
-  console.log(location.lat);
-  currentUser = value[0];
-  let userData = currentUser[2]
-  console.log(userData)
+ currentUser = value[0][0];
+ let userData = currentUser;
+
 
 let transporter = nodemailer.createTransport({
   service: "gmail",
@@ -255,7 +252,7 @@ let transporter = nodemailer.createTransport({
             <p style="text-align: center;">Name: ${userData.nameUser}</p>
             <p style="text-align: center;">Phone: ${userData.phone}</p>
             <p style="text-align: center;">Email: ${userData.email}</p>
-            <p style="text-align: center;"> picture: ${'Test currentUser.photo'}</p>
+            <p style="text-align: center;"> picture: <img src="data:image/jpg;base64,${'photo not include yet'}" alt='photo of user' width='200' height='200'/> </p>
             <p style="text-align: center;">The customer's delivery location is as follows:</p>
             <p style="text-align: center;">Please process and ship the order as soon as possible.</p>
             <p style="text-align: center;">Thank you for your prompt attention to this matter.</p>
@@ -269,18 +266,25 @@ let transporter = nodemailer.createTransport({
             </html>`
         };
 
+
   transporter.sendMail(mailOptions, (error, info) => {
           if (error) {
               return console.log(error);
           }
           console.log('Message sent: %s', info.messageId);
         });
+
       })
+
   }
 
-  // const deliveryEmailTwo = 'ysexstin@gmail.com';
-  // const confirmationGUY = 'confirmguy@gmail.co'
-  const deliveryEmailOne = 'youneshero436@gmail.com';
+const deliveryEmailTne = 'youneshero436@gmail.com';
 
-  sendEmailToDelivery('raymondyounes2@gmail.com',deliveryEmailOne); // email of customer, email of delivery guy
+
+// sendEmailToDelivery('raymondyounes2@gmail.com',deliveryEmailTne); // email of customer, email of delivery guy
+
+
+
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => console.log(`server started on port ${PORT}`));
 

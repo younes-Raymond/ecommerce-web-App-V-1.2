@@ -68,6 +68,7 @@ var parentPayments = document.querySelector(".parent-payments");
 var closePaymentMethods = document.getElementById("close-payment-methods");
 var About_US_Page = document.querySelector(".About_US_Page");
 function forDesktopStyle() {
+    
     if (ACollections) {
         alert("hello im from aler a collection ");
         ACollections.onmouseenter = function () {

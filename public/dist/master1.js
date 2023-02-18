@@ -23,7 +23,6 @@ var small0ne = document.getElementById("small-1");
 var smalltwo = document.getElementById("small-2");
 var smallthree = document.getElementById("small-3");
 var smallfour = document.getElementById("small-4");
-var biggimg = document.getElementById("big-img-id");
 var Value = document.getElementById("value");
 var plus = document.getElementById("plus");
 var counter = document.getElementById('counter');
@@ -63,6 +62,8 @@ var nex = document.getElementById("nex");
 var pre = document.getElementById("pre");
 var left = document.getElementById("left");
 var login = document.querySelector(".login");
+var loginimg = document.querySelector('.login img');
+var logintxt = document.querySelector('.login div');
 var navBar = document.querySelector('.nav-bar');
 var paymentMethod = document.querySelector(".payment-Methods");
 var masterCard = document.querySelector(".master-card");
@@ -73,6 +74,8 @@ var seller = "younes ";
 var footerAOne = document.getElementById('footer-a_[0]_About');
 var footerATwo = document.getElementById('footer-a_[1]_Contant');
 var footerAThree = document.getElementById('footer-a_[2]_privacyPolicy');
+var men_category_list = document.querySelector('.men-category-list');
+var Women_category_list = document.querySelector('.Women-category-list');
 var count = 0;
 window.onload = function () {
     AMen.addEventListener('click', function () {
@@ -80,6 +83,7 @@ window.onload = function () {
     });
     AWomen.addEventListener('click', () => {
         window.location.href = "/women";
+        bigImg.setAttribute("src", 'images/Women/pinckyNike.jpg');
     });
     AContact.addEventListener('click', () => {
         window.location.href = "/contact-us";
@@ -89,8 +93,6 @@ window.onload = function () {
     });
     AAbout.addEventListener('click', () => {
         window.location.href = "/about-us";
-        const ul_Main_nav_bar = document.querySelector('.container-bar ul');
-        console.log(ul_Main_nav_bar);
     });
     if (CashOnDelvery && masterCard) {
         CashOnDelvery.addEventListener('click', function () {
@@ -108,7 +110,7 @@ window.onload = function () {
             window.location.href = "/contact-us";
         });
         footerAThree.addEventListener('click', () => {
-            alert('you should to create privacy policy ');
+            alert('you should to create privacy policy  page , i have no time to do it now ');
         });
     }
     login.addEventListener("click", function (e) {
@@ -131,12 +133,72 @@ window.onload = function () {
         basketCounter.style.setProperty("display", "block");
         parentPayments.style.setProperty("display", "none");
         menuOptions.style.setProperty("display", "none");
+        if (men_category_list) {
+            men_category_list.style.setProperty('display', 'none');
+        }
         profile.classList.remove("active");
         small0ne.classList.add("active");
         smalltwo.classList.remove("active");
         smallthree.classList.remove("active");
         smallfour.classList.remove("active");
-        bigImg.setAttribute("src", "images/image-product-1.jpg");
+        const prefixAllUrl = () => {
+            if (window.location.href.includes('http://localhost:3000/women')) {
+                bigImg.setAttribute("src", "images/Women/pinckyNike1.jpg");
+                small0ne.setAttribute('src', 'images/Women/pinckyNike1.jpg');
+                smalltwo.setAttribute('src', 'images/Women/pinckyNike2.jpg');
+                smallthree.setAttribute('src', 'images/Women/pinckyNike3.jpg');
+                smallfour.setAttribute('src', 'images/Women/pinckyNike4.jpg');
+                const root = document.documentElement;
+                const styles = window.getComputedStyle(root);
+                const mainOrange = styles.getPropertyValue('--main-orange');
+                console.log(mainOrange);
+                root.style.setProperty('--main-orange', '#ff6782');
+                small0ne.onmouseenter = function () {
+                    small0ne.classList.add("active");
+                    smalltwo.classList.remove("active");
+                    smallthree.classList.remove("active");
+                    smallfour.classList.remove("active");
+                    bigImg.style.setProperty('margin', '0% 25%');
+                    bigImg.setAttribute("src", "images/Women/pinckyNike1.jpg");
+                };
+                small0ne.onmouseleave = () => {
+                    small0ne.classList.add("active");
+                    smalltwo.classList.remove("active");
+                    smallthree.classList.remove("active");
+                    smallfour.classList.remove("active");
+                    bigImg.style.setProperty('margin', '0% 25%');
+                    bigImg.setAttribute("src", "images/Women/pinckyNike1.jpg");
+                };
+                smalltwo.onmouseenter = function () {
+                    smalltwo.classList.add("active");
+                    small0ne.classList.remove("active");
+                    smallthree.classList.remove("active");
+                    smallfour.classList.remove("active");
+                    bigImg.setAttribute("src", "images/Women/pinckyNike2.jpg");
+                };
+                smallthree.onmouseenter = function () {
+                    smallthree.classList.add("active");
+                    smalltwo.classList.remove("active");
+                    smallfour.classList.remove("active");
+                    small0ne.classList.remove("active");
+                    bigImg.setAttribute("src", "images/Women/pinckyNike3.jpg");
+                };
+                smallfour.onmouseenter = function () {
+                    smallfour.classList.add("active");
+                    smalltwo.classList.remove("active");
+                    smallthree.classList.remove("active");
+                    small0ne.classList.remove("active");
+                    bigImg.setAttribute("src", "images/Women/pinckyNike4.jpg");
+                };
+            }
+            else if (window.location.href.includes('http://localhost:3000/Men')) {
+                bigImg.setAttribute("src", "images/image-product-1.jpg");
+            }
+            else if (window.location.href.includes('http://localhost:3000/Home') || window.location.href.includes('http://localhost:3000')) {
+                bigImg.setAttribute("src", "images/image-product-1.jpg");
+            }
+        };
+        prefixAllUrl();
         spanC.style.setProperty("display", "block");
         cartContent.style.setProperty("display", "none");
         textEmpthy.style.setProperty("display", "block");
@@ -190,7 +252,6 @@ window.onload = function () {
                 if (confirme === true) {
                 }
             }
-            console.log(`its in the end of func ${count}`);
         });
     }
     if (mynis) {
@@ -310,14 +371,15 @@ function forDesktopStyle() {
 }
 forDesktopStyle();
 basket.onclick = () => {
+    if (cartempthyid) {
     cartempthyid.style.setProperty("display", "block");
+}
 };
 document.addEventListener('DOMContentLoaded', () => {
     if (bigImg) {
         function prefixAll() {
             bigImg.style.setProperty("cursor", "inherit");
             previous.style.cssText = "float:left;margin-top:50%;width:7%;margin-left:5%;z-index:10;position:absolute;cursor:pointer;";
-            next.style.cssText = "float:right;position:sticky;margin-top:-50%;width:7%;margin-right;cursor:pointer;";
         }
         prefixAll();
     }
@@ -345,33 +407,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 function paymentStyleForMobile() {
-    paymentMethod.style.cssText = "flex-direction: column;";
     CashOnDelvery.style.cssText = 'width:50%; ';
-    parentPayments.style.cssText = "-120% 0%;";
+    parentPayments.style.cssText = "margin: -83% -10% 0%;";
     masterCard.style.setProperty("width", "60%");
 }
 function forMobileStyle() {
     paymentStyleForMobile();
+    previous.style.cssText = 'display:block;';
+    next.style.cssText = "float:right;position:sticky;margin: -49% 2% 0% 0%;width:7%;cursor:pointer;";
     login.style.setProperty("display", "none");
+    loginimg.style.setProperty('display', 'none');
+    logintxt.style.setProperty('display', 'none');
     const btn_mode = document.querySelector('.toggleButton');
     btn_mode.style.setProperty('display', 'none');
     landingPage.onclick = () => {
         cartempthyid.style.setProperty("display", "none");
     };
     basket.onclick = function () {
-        cartempthyid.style.cssText = "display: block; width: 96%;margin: 1% 0% 0% 2%;height: 33%;";
+        cartempthyid.style.cssText = "display: block; width: 96%;margin: 1% 0% 0% 2%;height: 30%;";
         cartempthy.style.setProperty("display", "block");
         profile.classList.add("active");
     };
     menu.setAttribute("src", "images/icon-menu.svg");
-    menu.style.cssText = "height:18%; margin:0 4%; cursor:pointer;";
+    menu.style.cssText = "height:18%; margin:0px -1%; cursor:pointer;";
     login.style.cssText = "margin-right:-6%;";
     const change = document.getElementById("change");
     change.style.cssText = "display:none;";
     basket.style.cssText = "margin:auto;";
-    profile.style.cssText = "height:40%; cursor:pointer;margin: 0 6% 0 -21%;";
+    profile.style.cssText = "height:40%; cursor:pointer;margin: 0 6% 0 -5%;";
     if (logo) {
-        logo.style.cssText = "margin-right: -35px";
+        logo.style.cssText = "margin-left: 8%";
     }
     else {
     }
@@ -389,8 +454,8 @@ function forMobileStyle() {
     addCard.style.cssText = "flex-direction:column; height:100%";
     const pricevalue = document.getElementById("price-value");
     pricevalue.style.setProperty("margin-right", "25%");
-    plusmynis.style.cssText = "width:100%; height:45px";
-    addBtn.style.cssText = "width:100%;margin: 5% 0% 8% 0%; height:45px;";
+    plusmynis.style.cssText = "width:100%; height:45px; margin: 0% 3%;";
+    addBtn.style.cssText = "width:96%;margin: 10% 3%; height:45px;";
     const addbtnspan = document.querySelector(".add-btn span");
     addbtnspan.style.setProperty("font-size", "18px");
     menuOptions.onclick = () => {
@@ -403,7 +468,7 @@ function forMobileStyle() {
         basket.style.setProperty("box-shadow", "0px 0px 23 01 var(--main-orange)");
         if (profile.classList.contains("active")) {
             profile.onclick = function () {
-                cartempthy.style.cssText = "display:block;margin: 1% 0% 0% 2%;width: 96%;";
+                cartempthy.style.cssText = "display:block;margin: 1% 0% 0% 2%;width: 96%; height:30%;";
                 menuOptions.style.setProperty("display", "none");
             };
         }
@@ -444,7 +509,6 @@ if (confirmDelete) {
 var c = 1;
 if (next && previous && pre && nex && masterCard && counter && addBtn && counter) {
     next.onclick = (e) => {
-        bigImg.style.cssText = "width:100%;width: 100%;border-radius: 0px;cursor: inherit;";
         left.style.cssText = "align-items:normal; width:100%; margin:auto";
         c++;
         if (c === 1) {
@@ -467,7 +531,6 @@ if (next && previous && pre && nex && masterCard && counter && addBtn && counter
     };
     previous.onclick = (e) => {
         c--;
-        bigImg.style.cssText = "width:100%;";
         if (c === 1) {
             bigImg.setAttribute("src", "images/image-product-1.jpg");
         }
@@ -502,17 +565,17 @@ if (next && previous && pre && nex && masterCard && counter && addBtn && counter
         previous.style.setProperty('box-shadow', 'none');
     };
     menu.onclick = () => {
-        menuOptions.style.cssText = "position:fixed; width:60%;height:120%;background:white;margin: -22% 0% 0% -40%;";
+        menuOptions.style.cssText = "position:fixed; width:60%;height:120%;background:white;margin:-8% 24% 0% 0%;";
         next.style.setProperty("display", "none");
         previous.style.setProperty("display", "none");
         menuOPtion.style.cssText = "display:flex; flex-direction:column;width:100%;margin:45% 0% 0% -5%;";
         closeMenu.style.cssText = "margin: -31% 7% 20% 0%;";
     };
     bigImg.onclick = () => {
-        menuOptions.style.cssText = "display:none";
+        menuOptions.style.cssText = "display:none;";
     };
     baskett.onclick = () => {
-        menuOptions.style.cssText = "display:none";
+        menuOptions.style.cssText = "display:none;";
     };
     closeMenu.onclick = () => {
         menuOptions.style.cssText = "margin-left:-160%;display:none;";
@@ -525,7 +588,6 @@ if (next && previous && pre && nex && masterCard && counter && addBtn && counter
     else if (width > 600) {
         forDesktopStyle();
         next.style.setProperty("display", "none");
-        previous.style.setProperty("display", "none");
         bigImg.style.setProperty("margin", "0% 0% 0% 25%");
         bigImg.onclick = () => {
             popup.style.setProperty("display", "block");
@@ -588,30 +650,48 @@ if (next && previous && pre && nex && masterCard && counter && addBtn && counter
             }
         };
     }
-    pre.onclick = () => {
-        countpopup--;
-        if (countpopup === 0) {
-            popupImgBig.setAttribute("src", "images/image-product-1.jpg");
-        }
-        else if (countpopup === 1) {
-            popupImgBig.setAttribute("src", "images/image-product-2.jpg");
-        }
-        else if (countpopup === 2) {
-            popupImgBig.setAttribute("src", "images/image-product-3.jpg");
-        }
-        else if (countpopup === 3) {
-            popupImgBig.setAttribute("src", "images/image-product-4.jpg");
-        }
-        if (countpopup < 0) {
-            return countpopup === 0;
-        }
-    };
-    masterCard.onclick = () => {
-        window.location.href = "index3.html";
-    };
-    CashOnDelvery.onclick = () => {
-        window.location.href = "map.ejs";
-    };
+    if (window.location.href.includes('http:localhost:3000/Women')) {
+        pre.onclick = () => {
+            countpopup--;
+            if (countpopup === 0) {
+                popupImgBig.setAttribute("src", "images/Women/pinckyNike1.jpg");
+            }
+            else if (countpopup === 1) {
+                popupImgBig.setAttribute("src", "images/Women/pinckyNike2.jpg");
+            }
+            else if (countpopup === 2) {
+                popupImgBig.setAttribute("src", "images/Women/pinckyNike3.jpg");
+            }
+            else if (countpopup === 3) {
+                popupImgBig.setAttribute("src", "images/Women/pinckyNike4.jpg");
+            }
+            if (countpopup < 0) {
+                return countpopup === 0;
+            }
+        };
+    }
+    else if (window.location.href.includes('http:localhost:3000/Men' || 'http:localhost:3000/Home')) {
+        pre.onclick = () => {
+            countpopup--;
+            if (countpopup === 0) {
+                popupImgBig.setAttribute("src", "images/image-product-1.jpg");
+            }
+            else if (countpopup === 1) {
+                popupImgBig.setAttribute("src", "images/image-product-2.jpg");
+            }
+            else if (countpopup === 2) {
+                popupImgBig.setAttribute("src", "images/image-product-3.jpg");
+            }
+            else if (countpopup === 3) {
+                popupImgBig.setAttribute("src", "images/image-product-4.jpg");
+            }
+            if (countpopup < 0) {
+                return countpopup === 0;
+            }
+        };
+    }
+    else {
+    }
     function paymentMethods() {
         const closePaymentMethods = document.getElementById('close-payment-methods');
         addBtn.onclick = () => {
@@ -641,7 +721,7 @@ if (next && previous && pre && nex && masterCard && counter && addBtn && counter
                         masterCard.style.cssText = "width:60%;";
                         CashOnDelvery.style.setProperty("width", "60%");
                         closePaymentMethods.style.setProperty("margin", "15% 0%");
-                        paymentMethod.style.setProperty("margin", "-130% 0% 0% 0%");
+                        paymentMethod.style.setProperty("margin", "-100% 0% 13% 0%");
                     });
                 }
                 closePaymentMethods.onclick = () => {
@@ -652,8 +732,8 @@ if (next && previous && pre && nex && masterCard && counter && addBtn && counter
     }
     var checkout = document.getElementById('button-box-confirm');
     checkout.addEventListener('click', () => {
-        alert('im a checkout and im defined ');
         paymentMethods();
+        window.location.href = "map";
     });
     paymentMethods();
 }
@@ -668,3 +748,23 @@ AAbout.addEventListener('click', function (e) {
         About_US_Page.style.setProperty("display", "block");
     }
 });
+function handlewithCtegory() {
+    let menArrowDown = document.getElementById('arrow-down-for-Men');
+    let womenArrowDown = document.getElementById('arrow-down-for-Women');
+    menArrowDown.onmouseenter = () => {
+        men_category_list.style.cssText = 'display:block;margin-left: 47%; transition:all 2s;';
+    };
+    men_category_list.onmouseleave = () => {
+        men_category_list.style.setProperty('display', 'none');
+    };
+    landingPage.onmouseenter = () => {
+        men_category_list.style.setProperty('display', 'none');
+    };
+    womenArrowDown.onmouseenter = () => {
+        men_category_list.style.cssText = 'display:block;margin-left: 52%; transition:all 2s;';
+    };
+    men_category_list.onmouseleave = () => {
+        Women_category_list.style.setProperty('display', 'none');
+    };
+}
+handlewithCtegory();
