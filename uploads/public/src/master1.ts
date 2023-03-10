@@ -88,7 +88,7 @@ var masterCard = document.querySelector(".master-card") as HTMLElement;
 var CashOnDelvery = document.querySelector(".CashOnDelevery") as HTMLDivElement
 var parentPayments = document.querySelector(".parent-payments")as HTMLElement;
 var closePaymentMethods = document.getElementById("close-payment-methods");
-var seller:string = "younes the first name from email id of user this variable will going to assignablle ";
+var seller:string = "younes ";
 
 // footer 
 var footerAOne = document.getElementById('footer-a_[0]_About') as HTMLAnchorElement;
@@ -143,7 +143,6 @@ footerAThree.addEventListener('click',()=> {
   alert('you should to create privacy policy  page , i have no time to do it now ')
   // window.location.href = "/"
 })
-
 }
 // login event router
   login.addEventListener("click", function(e) {
@@ -326,6 +325,10 @@ if (mynis){
 }
 
 
+
+
+
+
 interface ModeButton extends HTMLButtonElement {
   mode: 'light' | 'dark';
 }
@@ -442,7 +445,6 @@ smallfour.onmouseenter = function () {
 }
 }
 forDesktopStyle()
-
 
 basket.onclick = () => {
   cartempthyid.style.setProperty("display","block");

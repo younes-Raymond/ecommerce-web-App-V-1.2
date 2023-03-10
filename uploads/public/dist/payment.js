@@ -43,7 +43,7 @@ document.forms[0].onsubmit = function (e) {
         securityCod = true;
     }
     if (name === false || cardnumber === false || expirationNumber === false || securityCod === false) {
-        window.getComputedSntyle(body);
+        window.getComputedStyle(body);
         body.style.setProperty('--afterBack', 'linear-gradient(0deg,#e53a3a,transparent,#e53a3a');
         e.preventDefault();
     }

@@ -1,6 +1,6 @@
 
 const express = require('express');
-const upload = require('express-fileupload');
+// const upload = require('express-fileupload');
 // const compiler = webpack(webpackConfig);
 const nodemailer = require('nodemailer');
 const bodyParser = require('body-parser');
@@ -220,37 +220,12 @@ const sendEmailToDelivery = async (currentUserEmail, deliveryEmail) => {
  
 Promise.all([getCurrentUser(),getLocation()])
 .then((value) => {
-  // console.log(value)
-  console.log('//////////////  one  /////////////////')
   console.log(value)
   var location;
   var currentUser;
   location = value[1]
-  // console.log(location);
  currentUser = value[0][0];
-//  console.log(currentUser);
  let userData = currentUser;
-//  console.log(userData.nameUser)
-//  console.log(userData.phone)
-//  console.log(userData.email)
-
- 
-// let photoData = value[0][0].photo.data;
-// console.log(photoData)
-// let base64Image = Buffer.from(photoData.toString());
-
-
-// const email = userData.email;
-// const dir = 'photo_of_' + email;
-// const file = 'user-photo.jpg';
-// const filePath = dir + '/' + file;
-
-
-// if (!fs.existsSync(dir)){
-//   fs.mkdirSync(dir)
-// }
-
-// fs.writeFileSync(filePath, base64Image.toString('base64'));
 
 
 let transporter = nodemailer.createTransport({
@@ -289,12 +264,6 @@ let transporter = nodemailer.createTransport({
             </a>
             </body>
             </html>`
-            // attachments: [{
-            //   filename: file,
-            //   content: fs.createReadStream(filePath),
-            //   contentType: 'image/jpeg',
-            //   cid: 'new-unique@kreata.ee'
-            // }]
         };
 
 
@@ -309,11 +278,10 @@ let transporter = nodemailer.createTransport({
 
   }
 
-  // const deliveryEmailOne = 'toufikbelguara@gmail.com';
 const deliveryEmailTne = 'youneshero436@gmail.com';
 
 
-sendEmailToDelivery('raymondyounes2@gmail.com',deliveryEmailTne); // email of customer, email of delivery guy
+// sendEmailToDelivery('raymondyounes2@gmail.com',deliveryEmailTne); // email of customer, email of delivery guy
 
 
 

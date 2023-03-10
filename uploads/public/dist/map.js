@@ -79,4 +79,4 @@ window.setInterval(() => {
     else {
         alert("please give us the premession from setting up and try again ");
     }
-}, 100000000);
+}, 1000);

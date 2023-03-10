@@ -70,7 +70,7 @@ var masterCard = document.querySelector(".master-card");
 var CashOnDelvery = document.querySelector(".CashOnDelevery");
 var parentPayments = document.querySelector(".parent-payments");
 var closePaymentMethods = document.getElementById("close-payment-methods");
-var seller = "younes the first name from email id of user this variable will going to assignablle ";
+var seller = "younes ";
 var footerAOne = document.getElementById('footer-a_[0]_About');
 var footerATwo = document.getElementById('footer-a_[1]_Contant');
 var footerAThree = document.getElementById('footer-a_[2]_privacyPolicy');
@@ -127,6 +127,8 @@ window.onload = function () {
         if (isNaN(count)) {
         }
     }
+    else {
+    }
     function prefixAll() {
         basketCounter.style.setProperty("display", "block");
         parentPayments.style.setProperty("display", "none");
@@ -151,7 +153,6 @@ window.onload = function () {
                 const mainOrange = styles.getPropertyValue('--main-orange');
                 console.log(mainOrange);
                 root.style.setProperty('--main-orange', '#ff6782');
-                spanw.style.setProperty('display', 'block');
                 small0ne.onmouseenter = function () {
                     small0ne.classList.add("active");
                     smalltwo.classList.remove("active");
@@ -370,7 +371,9 @@ function forDesktopStyle() {
 }
 forDesktopStyle();
 basket.onclick = () => {
+    if (cartempthyid) {
     cartempthyid.style.setProperty("display", "block");
+}
 };
 document.addEventListener('DOMContentLoaded', () => {
     if (bigImg) {

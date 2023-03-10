@@ -4,6 +4,7 @@
 const yes = document.getElementById("yes") as HTMLDivElement;
 const no = document.getElementById("no") as HTMLDivElement;
 const confirm_BTN = document.getElementById("confirm_BTN")as HTMLButtonElement;
+
 yes.onclick = () => {
   yes.classList.add("active")
   no.classList.remove("active")
@@ -42,7 +43,6 @@ tiles.addTo(mymap);
 
 
 // making a marker with a custom icon 
-
 const issicon = L.icon({
   iconUrl:'images/location.png',
   iconSize: [50,32],

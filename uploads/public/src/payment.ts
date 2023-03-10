@@ -29,15 +29,15 @@ document.getElementById("securitycode").oninput = () => {
 
 // validate form and some animation here
 
-const username = document.getElementById('name')as HTMLInputElement;
-const cardnumberR = document.getElementById('cardnumber') as HTMLInputElement;
-const expiration = document.getElementById('expirationdate') as HTMLInputElement;
-const securitycode = document.getElementById('securitycode') as HTMLInputElement;
+const username = document.getElementById('name');
+const cardnumberR = document.getElementById('cardnumber');
+const expiration = document.getElementById('expirationdate');
+const securitycode = document.getElementById('securitycode');
 
 document.forms[0].onsubmit = function (e) {
-    let name:boolean = false;
-    let cardnumber:boolean = false;
-    let expirationNumber:boolean = false;
+    let name = false;
+    let cardnumber = false;
+    let expirationNumber = false;
     let securityCod = false;
 
     if (username.value !== "" &&  username.value.length <= 10 ) {
@@ -54,7 +54,7 @@ document.forms[0].onsubmit = function (e) {
         securityCod = true;
     }
     if (name === false || cardnumber === false || expirationNumber  === false  || securityCod === false) {
-   window.getComputedSntyle(body)
+         window.getComputedStyle(body);
         body.style.setProperty('--afterBack','linear-gradient(0deg,#e53a3a,transparent,#e53a3a')
         // let  result = expiration.value ;
         // alert(result * 500000)
